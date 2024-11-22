@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require ('cors');
 const mysql = require ('mysql2');
+
 const app = express();
 const PORT = 3001;
 
@@ -23,3 +24,16 @@ db.connect((erro) => {
         console.log('Conectado ao MySql com sucesso!');
     }
 });
+
+//rota para cadastrar usuario
+app.post('/alunos', (req, res) => {
+
+    const {nome, cidade, estado } = req.body;
+
+    const sql = 'INSERT INTO alunos (nome, cidade, estado)VALUES (? , ?, ?)';
+
+    db.query(sql, [nome, cidade, estado,], (err, result) => {
+
+    });
+ });
+
